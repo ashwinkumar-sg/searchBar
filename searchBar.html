@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <div id="root">
+
+    </div>
+    <!-- https://unpkg.com/react@16.12.0/umd/react.development.js -->
+    <script src="https://unpkg.com/react@16.12.0/umd/react.development.js"></script>
+    <!-- https://www.unpkg.com/react-dom@16.12.0/umd/react-dom.development.js -->
+    <script src="https://www.unpkg.com/react-dom@16.12.0/umd/react-dom.development.js"></script>
+
+    <!-- https://unpkg.com/babel-standalone@6.26.0/babel.js -->
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+    <script type="text/babel">
+       const rootHandle = document.getElementById('root')
+                class Search extends React.Component{
+                constructor(){
+                    super()
+                    this.state= {
+                        names:[
+                           {firstname:"ashwin",lastname:'g',email:"ashwin@gamil.com"},
+                           {firstname:"raj",lastname:'kumar',email:"raj@gamil.com"},
+                           {firstname:"rajni",lastname:'kanth',email:"rajni@gamil.com"},
+                           {firstname:"salman",lastname:'khan',email:"salman@gamil.com"},
+                           {firstname:"yash",lastname:'kgf',email:"yash@gamil.com"},
+                           {firstname:"allu",lastname:'arjun',email:"allu@gamil.com"},
+                           {firstname:"sharuk",lastname:'khan',email:"sharuk@gamil.com"},
+                           {firstname:"ameer",lastname:'khan',email:"ameer@gamil.com"},
+                           {firstname:"sachin",lastname:'tendulkar',email:"sachin@gamil.com"},
+                           {firstname:"sawrab",lastname:'gangooli',email:"sawrab@gamil.com"},
+                           {firstname:"rahul",lastname:'dravid',email:"rahul@gamil.com"},
+                           {firstname:"MS",lastname:'dhoni',email:"ms@gamil.com"},
+                           {firstname:"amitab",lastname:'bachhan',email:"amitab@gamil.com"},
+                           {firstname:"ravindra",lastname:'jadeja',email:"sir@gamil.com"}
+                        ] ,
+                        searchName:""
+                    }
+                }
+    
+            
+                handleChange=(e)=>{
+                    const searchName=e.target.value;
+                   
+                        this.setState({searchName})
+                }  
+                
+
+                render(){
+                    return(
+                        <div class="container bg-light p-5">
+
+                            <input class="form-control" type='text' placeholder="search" onChange={this.handleChange} value={this.state.title}/><br/>
+                           
+                            <table border='1' class="table table-striped">
+                            <thead>
+                            <tr>
+                            <td>Firstname</td>
+                            <td>Lastname</td>
+                            <td>Email</td>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+
+                        {this.state.names.filter((name)=>{
+                                if(name.firstname.includes(this.state.searchName)){
+                                return name
+                                }
+                            }).map((name,i)=>{
+                                        return <tr key={i}>
+                                                <td>{name.firstname}</td>
+                                                <td>{name.lastname}</td>
+                                                <td>{name.email}</td>
+                                               </tr>
+                                    })} 
+                            </tbody>
+                            </table>
+                            </div>
+                        )
+                    }
+                }
+                
+                ReactDOM.render(<Search/>,rootHandle)
+       
+      
+
+      </script>
+</body>
+
+</html>
