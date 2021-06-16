@@ -74,7 +74,7 @@
                             <tbody>
 
                         {this.state.names.filter((name)=>{
-                                if(name.firstname.includes(this.state.searchName || name.firstname.includes(this.state.searchName)){
+                                if(name.firstname.includes(this.state.searchName || name.lastname.includes(this.state.searchName)){
                                 return name
                                 }
                             }).map((name,i)=>{
